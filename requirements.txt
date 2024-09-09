@@ -1,0 +1,4 @@
+fastapi
+pytest
+langchain
+langchain-openai
