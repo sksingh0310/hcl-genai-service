@@ -17,7 +17,7 @@ async def root():
 
 @app.post("/generate-text/")
 async def generate_text(prompt: str):
-    chat = ChatOpenAI(model="gpt-4o", max_tokens = 150)
+    chat = ChatOpenAI(model="gpt-4o-mini", max_tokens = 150)
     msg = chat.invoke(prompt)
     return f"generated_text: {msg.content}"
    

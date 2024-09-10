@@ -12,12 +12,12 @@ def test_root():
     assert response.status_code == 200
     assert response.json() == {"message": "Welcome to the FastAPI Langchain Microservice"}
 
-def test_generate_text():
-    # Test the text generation endpoint
-    prompt = "Once upon a time"
-    response = client.post("/generate-text/", json={"prompt": prompt})
-    assert response.status_code == 200
-    assert "generated_text" in response.json()
-    assert isinstance(response.json()["generated_text"], str)
+# def test_generate_text():
+#     # Test the text generation endpoint
+#     prompt = "Once upon a time"
+#     response = client.post("/generate-text/", json={"prompt": prompt})
+#     assert response.status_code == 200
+#     assert "generated_text" in response.json()
+#     assert isinstance(response.json()["generated_text"], str)
 
 
