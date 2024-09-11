@@ -57,7 +57,7 @@ jobs:
         context: .
         file: ./DockerFile
         push: true
-        tags: ${{ secrets.DOCKER_USERNAME }}/fastapi-app-test:latest
+        tags: ${{ secrets.DOCKER_USERNAME }}/fastapi-app:latest
 
     - name: Image digest
       run: echo ${{ steps.build-and-publish.outputs.digest }}
