@@ -17,8 +17,10 @@ def test_generate_text():
     prompt = "What is openAI?"
     response = client.post("/generate-text/", json={"prompt": prompt})
     assert response.status_code == 200
-    assert "generated_text" in response.json()
-    assert isinstance(response.json()["generated_text"], str)
+    # Parse the response as JSON
+    response_data = response.json()
+    assert "generated_text" in response_data
+    assert isinstance(response_data["generated_text"], str)
 
   
 
