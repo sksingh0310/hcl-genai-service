@@ -2,14 +2,14 @@ from fastapi import FastAPI
 import uvicorn
 from langchain_openai import ChatOpenAI
 import os
+from dotenv import load_dotenv
 
 app = FastAPI()
 
 # Initialize OpenAI with your API key
-# openai_api_key = os.getenv("OPENAI_API_KEY")
-openai_api_key = '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'
-
-os.environ["OPENAI_API_KEY"] = openai_api_key
+load_dotenv()
+api_key = os.getenv('OPENAI_API_KEY')
+os.environ["OPENAI_API_KEY"] = api_key
 
 @app.get("/")
 async def root():
@@ -17,6 +17,15 @@ async def root():
 
 @app.post("/generate-text/")
 async def generate_text(prompt: str):
+    """
+    Endpoint to generate text based on a given prompt using OpenAI's language model.
+
+    Args:
+        prompt (str): The input prompt for text generation.
+
+    Returns:
+        str: The generated text from the language model.
+    """
     chat = ChatOpenAI(model="gpt-4o-mini", max_tokens = 150)
     msg = chat.invoke(prompt)
     return f"generated_text: {msg.content}"
