@@ -31,7 +31,7 @@ async def generate_text(request: PromptRequest):
     """
     chat = ChatOpenAI(model="gpt-4o-mini", max_tokens = 150)
     msg = chat.invoke(request.prompt)
-    return f"generated_text: {msg.content}"
+    return {"generated_text": msg.content}
    
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
